@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-cream: #fbf8f3;
+  --color-sand: #f3ece0;
+  --color-ink: #1e2f27;
+  --color-muted: #66756d;
+  --color-line: #e7e0d3;
+  --color-sage-50: #eff5f0;
+  --color-sage-100: #dfeae2;
+  --color-sage-200: #c3d8c9;
+  --color-sage-400: #7fa88b;
+  --color-sage-500: #5f8f6e;
+  --color-sage-600: #4a7759;
+  --color-sage-700: #3b5f48;
+  --color-clay: #d8825a;
+  --color-clay-50: #fcefe8;
+
+  --color-st-booked-bg: #e2edf8;
+  --color-st-booked: #2c5e8c;
+  --color-st-done-bg: #dcefe1;
+  --color-st-done: #2a6a41;
+  --color-st-noshow-bg: #fbe0d8;
+  --color-st-noshow: #a53f28;
+  --color-st-cancel-bg: #ebe8e2;
+  --color-st-cancel: #6c675f;
+
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  --shadow-card: 0 1px 2px rgb(30 47 39 / 0.04), 0 8px 24px -12px rgb(30 47 39 / 0.14);
+  --shadow-lift: 0 2px 4px rgb(30 47 39 / 0.05), 0 16px 36px -14px rgb(30 47 39 / 0.22);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: light;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  70% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.rise { animation: rise 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.pop { animation: pop 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise, .pop { animation: none; }
+  * { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+:focus-visible {
+  outline: 2px solid var(--color-sage-500);
+  outline-offset: 2px;
 }
