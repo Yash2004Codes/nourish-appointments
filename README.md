@@ -1,5 +1,7 @@
 # Nourish - appointments for a nutrition practice
 
+**Live demo: https://nourishus.netlify.app/** (dashboard: https://nourishus.netlify.app/dashboard)
+
 A small two-sided appointments product: a **client app** (mobile first) and a **nutritionist dashboard**,
 both reading and writing the same data.
 
