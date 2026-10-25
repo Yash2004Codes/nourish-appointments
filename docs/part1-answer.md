@@ -1,17 +1,17 @@
-# Part 1 - Solving no-shows for the nutritionist
+# Part 1: How I would stop the no-shows
 
-*(Draft - rewrite in your own words before exporting to PDF.)*
+**The problem in one line:** one in four clients doesn't turn up, and she only finds out when she's sitting there waiting. That is an empty slot she could have given to someone else.
 
-**The problem.** About 1 in 4 clients don't turn up, and she only finds out while sitting there waiting. Each one is an empty slot she could have filled.
+Most people don't skip on purpose. They forget, or something comes up and cancelling feels awkward. So I would fix forgetting and awkwardness first, because that is cheap and works for most people.
 
-**What I would do** - three layers, cheapest first, all on top of the WhatsApp she already uses:
+**What I would do**
 
-1. **Remind, and ask for a reply.** Send a WhatsApp message 24 hours and again 2 hours before: "Your consultation is tomorrow at 4 pm. Reply YES to confirm or RESCHEDULE if plans changed." Most no-shows are forgetfulness, not intent, and a reply costs the client two seconds.
-2. **Find out early, not at the door.** Anyone who hasn't confirmed by a few hours before gets flagged. She sees it on her list, can message them once more, and can offer the slot to a waiting client instead of sitting idle.
-3. **Make leaving easy and staying a little costly.** A one-tap reschedule link in every message, so cancelling is easier than ghosting. For clients who have already missed once, ask for a small refundable deposit on the next booking.
+1. **Remind them on WhatsApp, and ask for a reply.** She already runs everything on WhatsApp, so I would not ask her to learn a new tool. One message the day before and one a couple of hours before: "Your consultation is tomorrow at 4 pm. Reply YES to confirm, or tap here to reschedule." Replying takes two seconds.
+2. **Find out early, not at the door.** If someone hasn't confirmed a few hours before, she sees it on her list. She can send one more nudge, or offer that slot to someone on a waiting list. A cancellation she hears about early is a slot she can still fill.
+3. **Make leaving easier than ghosting.** Every message carries a one-tap reschedule link. If cancelling takes ten seconds and no explanation, people will cancel instead of vanishing.
+4. **A small refundable deposit, only for repeat offenders.** If someone has already missed once, ask for a small deposit on their next booking, refunded when they show up. I would not ask everyone, because it puts new clients off.
+5. **Keep score.** Mark every visit as Done or No-show. Then she can see her real no-show rate and who keeps missing, instead of guessing.
 
-**Track it.** Mark every visit Done or No-show, so she can see her no-show rate and which clients repeatedly miss, instead of guessing.
+**Why this order:** reminders and easy rescheduling cost almost nothing and fix most of the problem. The deposit is stronger but has a cost in goodwill, so it comes last and only where it is needed.
 
-**Why this order.** Reminders and easy rescheduling fix the majority of no-shows for almost no effort or friction. Deposits are effective but can put off new clients, so they are used only for repeat misses.
-
-**What I built toward this.** Clients confirm with one tap in the app; the dashboard shows who is confirmed and who isn't, warns about repeat no-shows, shows the no-show rate, and has a one-click pre-written WhatsApp reminder.
+**What I built toward this:** clients confirm with one tap in the app. Her dashboard shows who has confirmed and who hasn't, warns her about clients who have missed before, shows her no-show rate, and has a button that opens a ready-written WhatsApp reminder.

@@ -41,7 +41,7 @@ and cancelling releases them, also transactionally. The in-memory dev store enfo
 ## Stack
 
 Next.js (App Router) + TypeScript + Tailwind CSS, API routes as route handlers, **Amazon DynamoDB** for data,
-hosted on **AWS Amplify Hosting**.
+hosted on **Netlify**.
 
 ## Run locally
 
@@ -53,18 +53,20 @@ npm run dev        # http://localhost:3000 - uses an in-memory store, pre-loaded
 To run against real DynamoDB instead, set `DYNAMODB_TABLE` (and AWS credentials/region):
 
 ```bash
-DYNAMODB_TABLE=nourish-appointments AWS_REGION=ap-south-1 npm run dev
+DYNAMODB_TABLE=<your-table> AWS_REGION=<your-region> npm run dev
 ```
 
 Table: partition key `pk` (S), sort key `sk` (S), on-demand billing. Sample data is loaded automatically on first use.
 `POST /api/reset` (or the *Reset demo data* link on the dashboard) restores the five sample appointments.
 
-## Deploy (AWS Amplify)
+## Deploy (Netlify + DynamoDB)
 
-1. Create the table (above) in your region.
-2. Create an IAM role trusted by `amplify.amazonaws.com` with `dynamodb:GetItem/PutItem/UpdateItem/DeleteItem/Query/BatchWriteItem` on the table (the *compute role*).
-3. Amplify console -> *Host web app* -> connect this repo. Set environment variable `DYNAMODB_TABLE`; attach the compute role.
-4. `amplify.yml` in the repo handles the build.
+1. Create the DynamoDB table (partition key `pk` S, sort key `sk` S, on-demand) in your region.
+2. Create an IAM user limited to that one table (GetItem, PutItem, UpdateItem, DeleteItem, Query, BatchWriteItem) and an access key for it.
+3. Import the repo in Netlify (it detects Next.js; `netlify.toml` is included).
+4. Add environment variables in Netlify: `DYNAMODB_TABLE`, `NOURISH_AWS_REGION`, `NOURISH_AWS_ACCESS_KEY_ID`, `NOURISH_AWS_SECRET_ACCESS_KEY`
+   (Netlify reserves names starting with `AWS_`, hence the `NOURISH_` prefix). Never commit these values.
+5. Deploy.
 
 ## Sample data handling
 
