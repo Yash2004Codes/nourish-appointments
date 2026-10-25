@@ -133,7 +133,16 @@ function memoryStore(): Store {
 //   SLOT#<date> / <time>   the lock for that slot (attribute apptId)
 //   META / seeded          marker so sample data is loaded exactly once
 function dynamoStore(table: string): Store {
-  const doc = DynamoDBDocumentClient.from(new DynamoDBClient({ region: process.env.AWS_REGION_NAME || undefined }), {
+  const doc = DynamoDBDocumentClient.from(new DynamoDBClient({
+      region: process.env.NOURISH_AWS_REGION || process.env.AWS_REGION_NAME || undefined,
+      // Netlify reserves AWS_* names, so hosted keys come in under NOURISH_*; on AWS/local the default chain is used
+      credentials: process.env.NOURISH_AWS_ACCESS_KEY_ID
+        ? {
+            accessKeyId: process.env.NOURISH_AWS_ACCESS_KEY_ID,
+            secretAccessKey: process.env.NOURISH_AWS_SECRET_ACCESS_KEY ?? "",
+          }
+        : undefined,
+    }), {
     marshallOptions: { removeUndefinedValues: true },
   });
   const slotKey = (date: string, time: string) => ({ pk: `SLOT#${date}`, sk: time });
